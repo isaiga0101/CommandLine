@@ -24,8 +24,8 @@ class serial328
 	void td (unsigned char x);			  // Transmit char as a decimal
 };
 //--------------------------------------------------------------------------
-// Send a char
-void serial328::rx(unsigned char value)		//Transmit Char
+// Send a character
+void serial328::tx(unsigned char value)		//Transmit Char
 {
 	while ((UCSR0A & (1<<UDRE0))==0);		// Wait for transmit ready
 	UDR0 = value;
@@ -33,7 +33,11 @@ void serial328::rx(unsigned char value)		//Transmit Char
 }
 
 //---------------------------------------------------------------------------
-
+// Receive a character
+void serial328::rx()
+{
+	while ((UCSR0A & (1<<RXC0))==0);		//Wait for receive ready.
+}
 int main(void)
 {
     /* Replace with your application code */
