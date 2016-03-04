@@ -114,9 +114,9 @@ int main(void)
 		thello.tx(hello[count]);
 		count ++;
 	}
-	thello.tx(cr)
+	thello.tx(cr);
 	count = 0;
-	while(count = 27)
+	while(count <= 27)
 	{
 		thello.tx(prompt[count]);
 		count ++;
