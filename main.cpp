@@ -99,7 +99,11 @@ else if (x>=3 ) {tx('1'); x-=1 ;}
 else            {tx('0');       }
 }
 
+
+#define	cr	13
 char hello[6] = {"Hello"};
+char prompt[29] = {"Type hello for me to respond"};
+
 int count = 0;
 serial328 thello;
 int main(void)
@@ -108,6 +112,13 @@ int main(void)
 	while(count <= 4)
 	{
 		thello.tx(hello[count]);
+		count ++;
+	}
+	thello.tx(cr)
+	count = 0;
+	while(count = 27)
+	{
+		thello.tx(prompt[count]);
 		count ++;
 	}
 
