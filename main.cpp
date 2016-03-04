@@ -99,11 +99,18 @@ else if (x>=3 ) {tx('1'); x-=1 ;}
 else            {tx('0');       }
 }
 
+char hello[6] = {"Hello"};
+int count = 0;
+serial328 thello;
 int main(void)
 {
-    /* Replace with your application code */
-    while (1) 
-    {
-    }
+	thello.init_tx(BAUD9600);
+	while(count <= 4)
+	{
+		thello.tx(hello[count]);
+		count ++;
+	}
+
+    while (1);					// Never end program
 }
 
