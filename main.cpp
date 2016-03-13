@@ -3,13 +3,10 @@
  *
  * Created: 3/3/2016 7:06:16 PM
  * Author : Gayfi_000
-<<<<<<< HEAD
  */
 
 #include <avr/io.h>
 #include "serial328.h"
-=======
- */ 
 
 #include <avr/io.h>
 class serial328
@@ -52,10 +49,10 @@ void serial328::init_rx(unsigned char n_clock)
 {
 	UBRR0H = 0;
 	UBRR0L = n_clock;		// Set baud rate to___. See Define List
-	
+
 	UCSR0A |= (1<<U2X0);	//1=double clock speed on
 	UCSR0B |= (1<<RXEN0);	//Receive on
-	
+
 	//UCSR0C default will work here also
 	//UCSR0C |= (1<<UCSZ01) | (1<<UCSZ00);		//8 bits, No parity, 2 stop bits
 	return;
@@ -66,10 +63,10 @@ void serial328::init_tx(unsigned char n_clock)
 {
 		UBRR0H = 0;
 		UBRR0L = n_clock;		// Set baud rate to___. See Define List
-		
+
 		UCSR0A |= (1<<U2X0);	//1=double clock speed on
 		UCSR0B |= (1<<TXEN0);	//Transmit on
-		
+
 		//UCSR0C default will work here also
 		//UCSR0C |= (1<<UCSZ01) | (1<<UCSZ00);		//8 bits, No parity, 2 stop bits
 		return;
@@ -81,7 +78,7 @@ void serial328::td(unsigned char x)
 	 if (x>=200)  {tx('2'); x-=200;}
 else if (x>=100) {tx('1'); x-=100;}
 else			 {tx('0');		  }
-	
+
 	 if (x>=90) {tx('9'); x-=90;}
 else if (x>=80) {tx('8'); x-=80;}
 else if (x>=70) {tx('7'); x-=70;}
@@ -92,7 +89,7 @@ else if (x>=70) {tx('3'); x-=30;}
 else if (x>=60) {tx('2'); x-=20;}
 else if (x>=50) {tx('1'); x-=10;}
 else            {tx('0');       }
-	
+
 	 if (x>=9 ) {tx('9'); x-=9 ;}
 else if (x>=8 ) {tx('8'); x-=8 ;}
 else if (x>=7 ) {tx('7'); x-=7 ;}
@@ -112,11 +109,9 @@ char hello[6] = {"Hello"};
 char prompt[29] = {"Type hello for me to respond"};
 
 int count = 0;
-<<<<<<< HEAD
 class serial328 thello;
-=======
+
 serial328 thello;
->>>>>>> 2f5888f12909ca865c0aa08686ef60a96826d70b
 int main(void)
 {
 	thello.init_tx(BAUD9600);
@@ -135,4 +130,3 @@ int main(void)
 
     while (1);					// Never end program
 }
-
