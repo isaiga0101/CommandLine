@@ -1,0 +1,9 @@
+*Debug/
+*.cppproj
+*.xml
+*.atsln
+*.vs/
+*bin/
+*obj/
+*.layout
+*.cbp
