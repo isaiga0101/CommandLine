@@ -2,8 +2,12 @@
 *.cppproj
 *.xml
 *.atsln
+<<<<<<< HEAD
 *.vs/
 *bin/
 *obj/
 *.layout
 *.cbp
+=======
+*.vs/
+>>>>>>> 2f5888f12909ca865c0aa08686ef60a96826d70b
