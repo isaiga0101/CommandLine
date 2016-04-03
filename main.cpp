@@ -54,6 +54,15 @@ int main(void)
         };
 
         // Figure out what command was entered
+        count = 0;
+        endloop = false;
+        while (endloop = false)
+        {
+            if (input[count] = menu[count]) endloop = false;
+            else endloop = true;
+
+            if (input[count] = 0) endloop = true;
+        };
 
     };					// Never end program
 }
