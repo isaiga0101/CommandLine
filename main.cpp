@@ -24,14 +24,16 @@ class serial328 thello;
 
 int main(void)
 {
-	thello.init_tx(BAUD9600);
+	thello.init_tx(BAUD9600);                       // Initialize transmit uart to 9600 baud rate
 	while(count <= 4)
 	{
-		thello.tx(hello[count]);
+		thello.tx(hello[count]);                    // Transmit hello
 		count ++;
 	};
-	thello.tx(cr);
+	thello.tx(cr);                                  // Transmit Cariage Return
 	count = 0;
+
+	//Transmit the beginning message.
 	while(count <= 27)
 	{
 		thello.tx(prompt[count]);
@@ -40,14 +42,18 @@ int main(void)
 
     while (1)
     {
-            count = 0;
-            thello.init_rx(BAUD9600);
-            while (count <= max && endloop == false)
-            {
-                input[count] = thello.rx();
-                if (input[count] == 0) endloop = true;
-                count ++;
-            };
+        count = 0;                                  // Reset count to 0
+        thello.init_rx(BAUD9600);                   // Initialize receive for serial communication
+
+        // Save input to variable
+        while (count <= max && endloop == false)
+        {
+            input[count] = thello.rx();
+            if (input[count] == 0) endloop = true;
+            count ++;
+        };
+
+        // Figure out what command was entered
 
     };					// Never end program
 }
