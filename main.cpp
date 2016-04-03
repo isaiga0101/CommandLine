@@ -11,9 +11,14 @@
 #include <avr/io.h>
 
 #define	cr	13
+#define max 5
 char hello[6] = {"Hello"};
 char prompt[29] = {"Type hello for me to respond"};
+char input[max];
+char menu[2] = {"m"};
+char Cmenu[2] = {"M"};
 
+bool endloop = false;
 int count = 0;
 class serial328 thello;
 
@@ -24,14 +29,25 @@ int main(void)
 	{
 		thello.tx(hello[count]);
 		count ++;
-	}
+	};
 	thello.tx(cr);
 	count = 0;
 	while(count <= 27)
 	{
 		thello.tx(prompt[count]);
 		count ++;
-	}
+	};
 
-    while (1);					// Never end program
+    while (1)
+    {
+            count = 0;
+            thello.init_rx(BAUD9600);
+            while (count <= max && endloop == false)
+            {
+                input[count] = thello.rx();
+                if (input[count] == 0) endloop = true;
+                count ++;
+            };
+
+    };					// Never end program
 }
