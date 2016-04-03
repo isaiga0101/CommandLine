@@ -102,8 +102,6 @@ else if (x>=3 ) {tx('1'); x-=1 ;}
 else            {tx('0');       }
 }
 
->>>>>>> 2f5888f12909ca865c0aa08686ef60a96826d70b
-
 #define	cr	13
 char hello[6] = {"Hello"};
 char prompt[29] = {"Type hello for me to respond"};
