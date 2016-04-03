@@ -1,4 +1,5 @@
 #include "serial328.h"
+
 // Initialize USART to receive
 void serial328::init_rx(unsigned char n_clock)
 {
