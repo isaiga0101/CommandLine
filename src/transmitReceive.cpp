@@ -1,5 +1,5 @@
-#include "serial328.h"
-
+#include "../include/serial328.h"
+#include <avr/io.h>
 // Send a character
 void serial328::tx(unsigned char value)		//Transmit Char
 {

@@ -6,9 +6,7 @@
  */
 
 #include <avr/io.h>
-#include "serial328.h"
-
-#include <avr/io.h>
+#include "include/serial328.h"
 
 #define	cr	13
 #define max 5

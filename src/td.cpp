@@ -1,4 +1,5 @@
-#include "serial328.h"
+#include "../include/serial328.h"
+#include <avr/io.h>
 
 // Transmits x in decimal. Transmits it as 3 ascii characters. Number must be less than 200.
 void serial328::td(unsigned char x)
