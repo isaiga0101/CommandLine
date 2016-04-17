@@ -1,9 +1,0 @@
-# depslib dependency file v1.0
-1459651194 source:c:\users\gayfi_000\documents\avr\command_line\main.cpp
-	<avr/io.h>
-	"serial328.h"
-	<avr/io.h>
-
-1459651244 c:\users\gayfi_000\documents\avr\command_line\include\serial328.h
-	<avr/io.h>
-
