@@ -12,7 +12,7 @@
 #define max 5
 char hello[6] = {"Hello"};
 char prompt[29] = {"Type hello for me to respond"};
-char menuPr[] = {"Menu ----- m"};
+char menuPr[13] = {"Menu ----- m"};
 char input[max];
 char menu[2] = {"m"};
 char Cmenu[2] = {"M"};
@@ -62,15 +62,19 @@ int main(void)
         {
             if (input[count] = menu[count]){
                 thello.init_tx(9600);
-                cmRegog = true;
+                cmRecog = true;
                 endloop = false;
             }
             else {
                 endloop = true;
                 cmRecog = false;
+            }
 
             if (input[count] == 0 && endloop == true) endloop = true;
-            else (input[count] == 0 && endloop == false) error(true); endloop = true;
+            else if(input[count] == 0 && endloop == false)
+            {
+                error(true); endloop = true;
+            }
         };
 
     };					// Never end program
@@ -78,9 +82,9 @@ int main(void)
 
 void error(bool recieve)
 {
-    char error[6] = ["Error"];
+    char error[6] = {"Error"};
     class serial328 terror;
-    terror.init_tx(9600);
+    terror.init_tx(BAUD9600);
 
     for (int x = 0; error[x] == 0; x++){
     terror.tx(error[x]);
@@ -89,6 +93,6 @@ void error(bool recieve)
     if (recieve == false) return;
     else
     {
-        terror.init_rx(9600);
+        terror.init_rx(BAUD9600);
     }
 }
