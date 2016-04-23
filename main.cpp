@@ -58,10 +58,10 @@ int main(void)
         // Figure out what command was entered
         count = 0;
         endloop = false;
-        while (endloop = false)
+        while (endloop == false)
         {
-            if (input[count] = menu[count]){
-                thello.init_tx(9600);
+            if (input[count] == menu[count]){
+                thello.init_tx(BAUD9600);
                 cmRecog = true;
                 endloop = false;
             }
