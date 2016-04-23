@@ -12,7 +12,7 @@
 #define max 5
 char hello[6] = {"Hello"};
 char prompt[29] = {"Type hello for me to respond"};
-char menu[] = {"Menu ----- m"};
+char menuPr[] = {"Menu ----- m"};
 char input[max];
 char menu[2] = {"m"};
 char Cmenu[2] = {"M"};
