@@ -9,7 +9,7 @@
 #include "include/serial328.h"
 
 #define	cr	13
-#define max 5
+#define max 7
 char hello[6] = {"Hello"};
 char prompt[29] = {"Type hello for me to respond"};
 char menuPr[13] = {"Menu ----- m"};
