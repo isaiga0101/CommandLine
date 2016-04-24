@@ -51,7 +51,7 @@ int main(void)
         while (count <= max && endloop == false)
         {
             input[count] = thello.rx();
-            if (input[count] == 0) endloop = true;
+            if (input[count] == 13) endloop = true;
             count ++;
         };
 
