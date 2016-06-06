@@ -10,6 +10,7 @@
 
 #define	cr	13
 #define max 7
+
 char hello[6] = {"Hello"};
 char prompt[29] = {"Type hello for me to respond"};
 char menuPr[13] = {"Menu ----- m"};
@@ -32,7 +33,7 @@ int main(void)
 		thello.tx(hello[count]);                    // Transmit hello
 		count ++;
 	};
-	thello.tx(cr);                                  // Transmit Cariage Return
+	thello.tx(cr);                                  // Transmit Carriage Return
 	count = 0;
 
 	//Transmit the beginning message.
@@ -55,7 +56,7 @@ int main(void)
             count ++;
         };
 
-        // Figure out what command was entered
+        // Was the command Entered the menu command?
         count = 0;
         endloop = false;
         while (endloop == false)
@@ -70,8 +71,8 @@ int main(void)
                 cmRecog = false;
             }
 
-            if (input[count] == 0 && endloop == true) endloop = true;
-            else if(input[count] == 0 && endloop == false)
+            if (input[count] == 0 && cmRecog == true) endloop = true;
+            else if(input[count] == 0 && cmRecog == false)
             {
                 error(true); endloop = true;
             }
@@ -90,9 +91,12 @@ void error(bool recieve)
     terror.tx(error[x]);
     }
 
+    terror.tx(cr);
+
     if (recieve == false) return;
     else
     {
         terror.init_rx(BAUD9600);
+        return;
     }
 }
