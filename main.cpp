@@ -56,9 +56,10 @@ int main(void)
             count ++;
         };
 
-        // Was the command Entered the menu command?
-        count = 0;
-        endloop = false;
+        // Was the command entered the menu command?
+        count = 0;                          // The letter that were comparing
+        endloop = false;                    // When true the while loop ends
+        // This loop checks every letter to see if it matches the menu string
         while (endloop == false)
         {
             if (input[count] == menu[count]){
@@ -71,11 +72,14 @@ int main(void)
                 cmRecog = false;
             }
 
-            if (input[count] == 0 && cmRecog == true) endloop = true;
-            else if(input[count] == 0 && cmRecog == false)
-            {
+            // Check to see if we are done comparing strings
+            if (input[count] == 0 && cmRecog == true) endloop = true;                   // End the loop with no error if each character was
+                                                                                        // recognized and the string has ended.
+            else if(input[count] == 0 && cmRecog == false)                              // Else if a character wasn't recognized than end
+            {                                                                           // with error msg.
                 error(true); endloop = true;
             }
+            else count ++;                                                              // If were not done comparing add 1 to count.
         };
 
     };					// Never end program
