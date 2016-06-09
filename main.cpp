@@ -20,7 +20,7 @@ char Cmenu[2] = {"M"};
 
 bool endloop = false;
 bool cmRecog = false;
-int count = 0;
+int counter = 0;
 
 void error(bool receive);
 void menuMsg(bool receive);
@@ -31,41 +31,41 @@ class serial328 thello;
 int main(void)
 {
 	thello.init_tx(BAUD9600);                       // Initialize transmit uart to 9600 baud rate
-	while(count <= 4)
+	while(counter <= 4)
 	{
-		thello.tx(hello[count]);                    // Transmit hello
-		count ++;
+		thello.tx(hello[counter]);                    // Transmit hello
+		counter ++;
 	};
 	thello.tx(cr);                                  // Transmit Carriage Return
-	count = 0;
+	counter = 0;
 
 	//Transmit the beginning message.
-	while(count <= 27)
+	while(counter <= 27)
 	{
-		thello.tx(prompt[count]);
-		count ++;
+		thello.tx(prompt[counter]);
+		counter ++;
 	};
 
     while (1)
     {
-        count = 0;                                  // Reset count to 0
+        counter = 0;                                  // Reset count to 0
         thello.init_rx(BAUD9600);                   // Initialize receive for serial communication
 
         // Save input to variable
-        while (count <= max && endloop == false)
+        while (counter <= max && endloop == false)
         {
-            input[count] = thello.rx();
-            if (input[count] == 13) endloop = true;
-            count ++;
+            input[counter] = thello.rx();
+            if (input[counter] == 13) endloop = true;
+            counter ++;
         };
 
         // Was the command entered the menu command?
-        count = 0;                          // The letter that were comparing
+        counter = 0;                          // The letter that were comparing
         endloop = false;                    // When true the while loop ends
         // This loop checks every letter to see if it matches the menu string
         while (endloop == false)
         {
-            if (input[count] == menu[count]){
+            if (input[counter] == menu[counter]){
                 thello.init_tx(BAUD9600);
                 cmRecog = true;
                 endloop = false;
@@ -76,15 +76,15 @@ int main(void)
             }
 
             // Check to see if we are done comparing strings
-            if (input[count] == 0 && cmRecog == true){
+            if (input[counter] == 0 && cmRecog == true){
                 endloop = true;                                                         // End the loop with no error if each character was
                                menuMsg(true);                                                         // recognized and the string has ended.
             }
-            else if(input[count] == 0 && cmRecog == false)                              // Else if a character wasn't recognized than end
+            else if(input[counter] == 0 && cmRecog == false)                              // Else if a character wasn't recognized than end
             {                                                                           // with error msg.
                 error(true); endloop = true;
             }
-            else count ++;                                                              // If were not done comparing add 1 to count.
+            else counter ++;                                                              // If were not done comparing add 1 to count.
         };
 
     };					// Never end program
