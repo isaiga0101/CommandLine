@@ -21,7 +21,10 @@ char Cmenu[2] = {"M"};
 bool endloop = false;
 bool cmRecog = false;
 int count = 0;
+
 void error(bool receive);
+void menuMsg(bool receive);
+
 class serial328 thello;
 
 
@@ -73,8 +76,10 @@ int main(void)
             }
 
             // Check to see if we are done comparing strings
-            if (input[count] == 0 && cmRecog == true) endloop = true;                   // End the loop with no error if each character was
-                                                                                        // recognized and the string has ended.
+            if (input[count] == 0 && cmRecog == true){
+                endloop = true;                                                         // End the loop with no error if each character was
+                               menuMsg(true);                                                         // recognized and the string has ended.
+            }
             else if(input[count] == 0 && cmRecog == false)                              // Else if a character wasn't recognized than end
             {                                                                           // with error msg.
                 error(true); endloop = true;
@@ -88,7 +93,7 @@ int main(void)
 void error(bool recieve)
 {
     char error[6] = {"Error"};
-    class serial328 terror;
+    private class serial328 terror;
     terror.init_tx(BAUD9600);
 
     for (int x = 0; error[x] == 0; x++){
@@ -101,6 +106,30 @@ void error(bool recieve)
     else
     {
         terror.init_rx(BAUD9600);
+        return;
+    }
+}
+
+void menuMsg(bool receive)
+{
+    char menu[5] = {"Menu"};
+    char dash[8] = {" ----- "};
+
+    private class serial328 tmenu;
+    tmenu.init_tx(BAUD9600);
+    for (int x = 0; menu[x] == 0; x++){
+        tmenu.tx(error[x]);
+    }
+
+    for (int x = 0; dash[x] == 0; x++){
+        tmenu.tx(dash[x]);
+    }
+    tmenu.tx(cr);
+
+    if (recieve == false) return;
+    else
+    {
+        tmenu.init_rx(BAUD9600);
         return;
     }
 }
