@@ -93,7 +93,7 @@ int main(void)
 void error(bool recieve)
 {
     char error[6] = {"Error"};
-    private class serial328 terror;
+    class serial328 terror;
     terror.init_tx(BAUD9600);
 
     for (int x = 0; error[x] == 0; x++){
@@ -110,15 +110,15 @@ void error(bool recieve)
     }
 }
 
-void menuMsg(bool receive)
+void menuMsg(bool recieve)
 {
     char menu[5] = {"Menu"};
     char dash[8] = {" ----- "};
 
-    private class serial328 tmenu;
+    class serial328 tmenu;
     tmenu.init_tx(BAUD9600);
     for (int x = 0; menu[x] == 0; x++){
-        tmenu.tx(error[x]);
+        tmenu.tx(menu[x]);
     }
 
     for (int x = 0; dash[x] == 0; x++){
