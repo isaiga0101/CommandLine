@@ -76,11 +76,11 @@ int main(void)
             }
 
             // Check to see if we are done comparing strings
-            if (input[counter] == 0 && cmRecog == true){
+            if ((input[counter] == 0 || input[counter] == 13) && cmRecog == true){
                 endloop = true;                                                         // End the loop with no error if each character was
                                menuMsg(true);                                                         // recognized and the string has ended.
             }
-            else if(input[counter] == 0 && cmRecog == false)                              // Else if a character wasn't recognized than end
+            else if((input[counter] == 0 || input[counter] == 13) && cmRecog == false)                              // Else if a character wasn't recognized than end
             {                                                                           // with error msg.
                 error(true); endloop = true;
             }
