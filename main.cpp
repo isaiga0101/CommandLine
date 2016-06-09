@@ -49,6 +49,7 @@ int main(void)
     while (1)
     {
         counter = 0;                                  // Reset count to 0
+        endloop = false;
         thello.init_rx(BAUD9600);                   // Initialize receive for serial communication
 
         // Save input to variable
